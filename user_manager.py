@@ -26,11 +26,27 @@ def manage_users():
 
 	cnx, cursor = connect_db()
 	
-	u = User()
-	u.username = 'Janusz'
-	u.email = 'janusz@gmail.com'
-	u.set_password('passat_b5', '1999')
-	u.save_to_db(cursor)
+	# u = User()
+	# u.username = 'Grazyna'
+	# u.email = 'grazyna@gmail.com'
+	# u.set_password('nimbus2000', '1999')
+	# u.save_to_db(cursor)
+
+	
+	# u = User.load_user_by_id(cursor, 2)
+	# print(u.id)
+	# print(u.email)
+	# print(u.username)
+
+	users = User.load_all_users(cursor)
+	print('{} users:'.format(len(users)))
+	print('-----')
+	for user in users:
+		print(user.id)
+		print(user.username)
+		print(user.email)
+		print('-----')	
+
 
 	close_connection(cnx, cursor)
 
